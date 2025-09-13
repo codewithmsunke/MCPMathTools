@@ -82,6 +82,29 @@ async function main() {
             ]
         };
     });
+    // GCM (Greatest Common Measure) / GCD (Greatest Common Divisor)
+    server.registerTool("gcm", {
+        title: "GCM tool",
+        description: "Calculate the greatest common measure (GCD) of two numbers",
+        inputSchema: { a: z.number(), b: z.number() },
+    }, async ({ a, b }) => {
+        const gcd = (x, y) => {
+            x = Math.abs(x);
+            y = Math.abs(y);
+            while (y !== 0) {
+                const temp = y;
+                y = x % y;
+                x = temp;
+            }
+            return x;
+        };
+        const result = gcd(a, b);
+        return {
+            content: [
+                { type: "text", text: `The greatest common measure of ${a} and ${b} is ${result}` }
+            ]
+        };
+    });
     // LCM (Least Common Multiple)
     server.registerTool("lcm", {
         title: "LCM tool",
@@ -89,6 +112,8 @@ async function main() {
         inputSchema: { a: z.number(), b: z.number() },
     }, async ({ a, b }) => {
         const gcd = (x, y) => {
+            x = Math.abs(x);
+            y = Math.abs(y);
             while (y !== 0) {
                 const temp = y;
                 y = x % y;
