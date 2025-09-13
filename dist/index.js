@@ -82,6 +82,27 @@ async function main() {
             ]
         };
     });
+    // LCM (Least Common Multiple)
+    server.registerTool("lcm", {
+        title: "LCM tool",
+        description: "Calculate the least common multiple of two numbers",
+        inputSchema: { a: z.number(), b: z.number() },
+    }, async ({ a, b }) => {
+        const gcd = (x, y) => {
+            while (y !== 0) {
+                const temp = y;
+                y = x % y;
+                x = temp;
+            }
+            return x;
+        };
+        const lcm = (a, b) => (a * b) / gcd(a, b);
+        return {
+            content: [
+                { type: "text", text: `The least common multiple of ${a} and ${b} is ${lcm(a, b)}` }
+            ]
+        };
+    });
     // Division
     server.registerTool("divide", {
         title: "Division tool",
