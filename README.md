@@ -57,6 +57,9 @@ This project is designed to run as an MCP server using VS Code's MCP integration
 - **sqrt**: Square root of a number
   - Input: `{ x: number }`
   - Output: `The square root of x is result` (rounded to two decimals, error if x < 0)
+- **lcm**: Least Common Multiple of two numbers
+  - Input: `{ a: number, b: number }`
+  - Output: `The LCM of a and b is result`
 
 ## Greeting Resource
 - **greet**: Returns a greeting for a given name
@@ -70,6 +73,7 @@ This project is designed to run as an MCP server using VS Code's MCP integration
 - Divide: `{ a: 8, b: 2 }` → `The quotient of 8 divided by 2 is 4`
 - Square: `{ a: 7 }` → `The square of 7 is 49`
 - Square Root: `{ x: 5 }` → `The square root of 5 is 2.24`
+- LCM: `{ a: 2, b: 5 }` → `The LCM of 2 and 5 is 10`
 - Greeting: `greet://Alice` → `Hello, Alice!`
 
 ## Extending the Project
