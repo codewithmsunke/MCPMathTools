@@ -6,6 +6,7 @@ A Model Context Protocol (MCP) server built with TypeScript and Node.js, designe
 - Addition, Subtraction, Multiplication, Division (with division-by-zero error handling)
 - Square and Square Root (with error handling for negative input, and results rounded to two decimals)
 - Greatest Common Measure (GCM) and Least Common Multiple (LCM)
+- Number Comparison tools (less than, greater than, less than or equal, greater than or equal, general comparison)
 - Greeting resource (returns a personalized greeting)
 - Fully type-safe using Zod schemas
 - Easily extensible for more tools/resources
@@ -64,6 +65,21 @@ This project is designed to run as an MCP server using VS Code's MCP integration
 - **lcm**: Least Common Multiple of two numbers
   - Input: `{ a: number, b: number }`
   - Output: `The LCM of a and b is result`
+- **lessThan**: Compare if a is less than b
+  - Input: `{ a: number, b: number }`
+  - Output: `a is less than b` or `a is not less than b`
+- **greaterThan**: Compare if a is greater than b
+  - Input: `{ a: number, b: number }`
+  - Output: `a is greater than b` or `a is not greater than b`
+- **lessThanOrEqual**: Compare if a is less than or equal to b
+  - Input: `{ a: number, b: number }`
+  - Output: `a is less than or equal to b` or `a is not less than or equal to b`
+- **greaterThanOrEqual**: Compare if a is greater than or equal to b
+  - Input: `{ a: number, b: number }`
+  - Output: `a is greater than or equal to b` or `a is not greater than or equal to b`
+- **compare**: General comparison tool
+  - Input: `{ a: number, b: number }`
+  - Output: `Comparison result: -1, 0, or 1` with description
 
 ## Greeting Resource
 - **greet**: Returns a greeting for a given name
@@ -79,6 +95,11 @@ This project is designed to run as an MCP server using VS Code's MCP integration
 - Square Root: `{ x: 5 }` → `The square root of 5 is 2.24`
 - GCM: `{ a: 12, b: 18 }` → `The greatest common measure of 12 and 18 is 6`
 - LCM: `{ a: 2, b: 5 }` → `The LCM of 2 and 5 is 10`
+- Less Than: `{ a: 3, b: 5 }` → `3 is less than 5`
+- Greater Than: `{ a: 7, b: 4 }` → `7 is greater than 4`
+- Less Than or Equal: `{ a: 5, b: 5 }` → `5 is less than or equal to 5`
+- Greater Than or Equal: `{ a: 8, b: 3 }` → `8 is greater than or equal to 3`
+- Compare: `{ a: 2.5, b: 3.7 }` → `Comparison result: -1 (2.5 is less than 3.7)`
 - Greeting: `greet://Alice` → `Hello, Alice!`
 
 ## Extending the Project

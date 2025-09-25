@@ -149,6 +149,85 @@ async function main() {
             ]
         };
     });
+    // Number Comparison Tools
+    // Less Than
+    server.registerTool("lessThan", {
+        title: "Less Than comparison tool",
+        description: "Compare if a is less than b (a < b)",
+        inputSchema: { a: z.number(), b: z.number() },
+    }, async ({ a, b }) => {
+        const result = a < b;
+        return {
+            content: [
+                { type: "text", text: `${a} is ${result ? '' : 'not '}less than ${b}` }
+            ]
+        };
+    });
+    // Greater Than
+    server.registerTool("greaterThan", {
+        title: "Greater Than comparison tool",
+        description: "Compare if a is greater than b (a > b)",
+        inputSchema: { a: z.number(), b: z.number() },
+    }, async ({ a, b }) => {
+        const result = a > b;
+        return {
+            content: [
+                { type: "text", text: `${a} is ${result ? '' : 'not '}greater than ${b}` }
+            ]
+        };
+    });
+    // Less Than or Equal
+    server.registerTool("lessThanOrEqual", {
+        title: "Less Than or Equal comparison tool",
+        description: "Compare if a is less than or equal to b (a <= b)",
+        inputSchema: { a: z.number(), b: z.number() },
+    }, async ({ a, b }) => {
+        const result = a <= b;
+        return {
+            content: [
+                { type: "text", text: `${a} is ${result ? '' : 'not '}less than or equal to ${b}` }
+            ]
+        };
+    });
+    // Greater Than or Equal
+    server.registerTool("greaterThanOrEqual", {
+        title: "Greater Than or Equal comparison tool",
+        description: "Compare if a is greater than or equal to b (a >= b)",
+        inputSchema: { a: z.number(), b: z.number() },
+    }, async ({ a, b }) => {
+        const result = a >= b;
+        return {
+            content: [
+                { type: "text", text: `${a} is ${result ? '' : 'not '}greater than or equal to ${b}` }
+            ]
+        };
+    });
+    // General Compare
+    server.registerTool("compare", {
+        title: "General comparison tool",
+        description: "Compare two numbers and return -1, 0, or 1 (-1 if a < b, 0 if a = b, 1 if a > b)",
+        inputSchema: { a: z.number(), b: z.number() },
+    }, async ({ a, b }) => {
+        let result;
+        let description;
+        if (a < b) {
+            result = -1;
+            description = `${a} is less than ${b}`;
+        }
+        else if (a > b) {
+            result = 1;
+            description = `${a} is greater than ${b}`;
+        }
+        else {
+            result = 0;
+            description = `${a} is equal to ${b}`;
+        }
+        return {
+            content: [
+                { type: "text", text: `Comparison result: ${result} (${description})` }
+            ]
+        };
+    });
     // Register a “greet” resource: returns a greeting based on name parameter
     server.registerResource("greet", new ResourceTemplate("greet://{name}", { list: undefined }), {
         title: "Greeting Resource",
